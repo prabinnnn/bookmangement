@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bookcontrol = require("./book.controller");
+const { validate } = require("./book.validator");
 router.get("/", (req, res, next) => {
   try {
     result = bookcontrol.get(req.body);
@@ -8,9 +9,9 @@ router.get("/", (req, res, next) => {
     next(e);
   }
 });
-router.post("/", (req, res, next) => {
+router.post("/", validate, async (req, res, next) => {
   try {
-    result = bookcontrol.create(req.body);
+    result = await bookcontrol.create(req.body);
     res.json({ msg: result });
   } catch (e) {
     next(e);
