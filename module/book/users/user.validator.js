@@ -1,6 +1,8 @@
 const Joi = require("joi");
 const Schema = Joi.object({
   name: Joi.string().required(),
+  address: Joi.string().required(),
+  phoneno: Joi.string().required(),
 });
 
 const validate = (req, res, next) => {
