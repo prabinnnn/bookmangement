@@ -1,4 +1,6 @@
 const router = require("express").Router();
 const bookrouter = require("../module/book/book.route");
-router.use("/api/v1", bookrouter);
+const userrouter = require("../module/book/users/user.route");
+router.use("/api/v2/user", userrouter);
+router.use("/api/v1/book", bookrouter);
 module.exports = router;
